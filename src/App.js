@@ -5,6 +5,7 @@ import { Router, Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
+// custom component
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Home from "./components/Home";
