@@ -10,6 +10,8 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
+import CompanysList from "./components/Comlist";
+import ViewCompany from "./components/ViewCompany";
 
 import { logout } from "./actions/auth";
 import { clearMessage } from "./actions/message";
@@ -105,7 +107,15 @@ const App = () => {
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/profile" component={Profile} />
-           
+            <Route exact path="/companys_list" component={CompanysList} />
+            {/* <Route
+              path="/add-Student/:id"
+              component={CreateStudentComponent}
+            ></Route> */}
+            <Route
+              path="/view-Company/:id"
+              component={ViewCompany}
+            ></Route>
           </Switch>
         </div>
 
