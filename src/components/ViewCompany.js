@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import CompanyService from '../services/CompanyService'
+import CompanyService from '../services/comService'
 
 class ViewCompany extends Component {
     constructor(props) {
@@ -11,36 +11,34 @@ class ViewCompany extends Component {
         }
     }
 
-    
     componentDidMount(){
-        CompanyService.getCompanyById().then((res) => {
-            this.setState({ companys: res.data});
-        });
+        CompanyService.getCompanyById(this.state.id).then( res => {
+            this.setState({company: res.data});
+        })
     }
-
 
     render() {
         return (
             <div>
                 <br></br>
                 <div className = "card col-md-6 offset-md-3">
-                    <h3 className = "text-center"> View Student Details</h3>
+                    <h3 className = "text-center"> View Company Details</h3>
                     <div className = "card-body">
                         <div className = "row">
-                            <label> company Name: </label>
-                            <div> { this.state.company.comName }</div>
+                            <label> Company Name: </label>
+                            <label> { this.state.company.comName }</label>
                         </div>
                         <div className = "row">
-                            <label> company Address Number: </label>
-                            <div> { this.state.company.comAddress }</div>
+                            <label> Company Address Number: </label>
+                            <label> { this.state.company.comAddress }</label>
                         </div>
                         <div className = "row">
-                            <label> company Email ID: </label>
-                            <div> { this.state.company.comEmail }</div>
+                            <label> Company Email ID: </label>
+                            <label> { this.state.company.comEmail }</label>
                         </div>
                         <div className = "row">
-                            <label> company Des Name: </label>
-                            <div> { this.state.company.comDescription }</div>
+                            <label> Company Des Name:</label>
+                            <label> { this.state.company.comDescription }</label>
                         </div>
                         
                         

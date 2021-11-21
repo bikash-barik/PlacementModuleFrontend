@@ -1,6 +1,8 @@
 import React, { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from 'react-router-dom';
+import { Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
+import '../Auth.css'
 
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
@@ -26,8 +28,8 @@ const Login = (props) => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const { isLoggedIn } = useSelector(state => state.auth);
-  const { message } = useSelector(state => state.message);
+  const { isLoggedIn } = useSelector((state) => state.auth);
+  const { message } = useSelector((state) => state.message);
 
   const dispatch = useDispatch();
 
@@ -51,7 +53,7 @@ const Login = (props) => {
     if (checkBtn.current.context._errors.length === 0) {
       dispatch(login(username, password))
         .then(() => {
-          props.history.push("/profile");
+          props.history.push("/companys_list");
           window.location.reload();
         })
         .catch(() => {
@@ -99,8 +101,10 @@ const Login = (props) => {
               validations={[required]}
             />
           </div>
-
-          <div className="form-group">
+          <Link to="/forgot_password">
+            <a>Forgot password</a>
+          </Link>
+          <div className="form-group mt-2">
             <button className="btn btn-primary btn-block" disabled={loading}>
               {loading && (
                 <span className="spinner-border spinner-border-sm"></span>
@@ -108,6 +112,7 @@ const Login = (props) => {
               <span>Login</span>
             </button>
           </div>
+         Or <Link to="/signup"><a>Sign up now!</a></Link>
 
           {message && (
             <div className="form-group">

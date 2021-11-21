@@ -10,21 +10,21 @@ const getAll = () => {
 };
 // console.log("fvdxfvdxfbsdf"+getAll)
 
-// const getAll = () => {
-//   return http.get("/companys");
-// };
+const getAll = () => {
+  return http.get("/companys", { headers: authHeader() });
+};
 
-// const get = id => {
-//   return http.get(`/tutorials/${id}`);
-// };
+const get = id => {
+  return http.get(`/tutorials/${id}`, { headers: authHeader() });
+};
 
-// const create = data => {
-//   return http.post("/tutorials", data);
-// };
+const create = data => {
+  return http.post("/tutorials", data, { headers: authHeader() });
+};
 
-// const update = (id, data) => {
-//   return http.put(`/tutorials/${id}`, data);
-// };
+const update = (id, data) => {
+  return http.put(`/tutorials/${id}`, data, { headers: authHeader() });
+};
 
 // const remove = id => {
 //   return http.delete(`/tutorials/${id}`);
@@ -35,9 +35,9 @@ const getAll = () => {
 
 const CompanyService = {
   getAll,
-  // get,
-  // create,
-  // update,
+  get,
+  create,
+  update,
   // remove,
  
   

@@ -1,142 +1,177 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { Component } from "react";
+import CompanyService from '../services/comService'
+import { BrowserRouter as Link } from "react-router-dom";
+
+import {  IoMan, IoBus } from "react-icons/io5";
 import {
-  retrieveCompanys,
-} from "../actions/company";
-import { Link } from "react-router-dom";
+  Button,
+  Card,
+  CardBody,
+  CardTitle,
+  CardText,
+  CardFooter,
+} from "reactstrap";
 
+import { Col, Row, Container } from "reactstrap";
 
-const CompanysList = () => {
-    const [currentCompany, setCurrentCompany] = useState(null);
-    const [currentIndex, setCurrentIndex] = useState(-1);
-    // const [searchTitle, setSearchTitle] = useState("");
-  
-    const companys = useSelector(state => state.companys);
-    const dispatch = useDispatch();
-  
-    useEffect(() => {
-      dispatch(retrieveCompanys());
-    }, []);
-  
-    // const onChangeSearchTitle = e => {
-    //   const searchTitle = e.target.value;
-    //   setSearchTitle(searchTitle);
-    // };
-  
-    // const refreshData = () => {
-    //   setCurrentCompany(null);
-    //   setCurrentIndex(-1);
-    // };
-  
-    const setActiveCompany = (company, index) => {
-      setCurrentCompany(company);
-      setCurrentIndex(index);
-    };
-  
-    // const removeAllCompanys = () => {
-    //   dispatch(deleteAllCompanys())
-    //     .then(response => {
-    //       console.log(response);
-    //       refreshData();
-    //     })
-    //     .catch(e => {
-    //       console.log(e);
-    //     });
-    // };
-  
-    // const findByTitle = () => {
-    //   refreshData();
-    //   dispatch(findCompanysByTitle(searchTitle));
-    // };
-  
+class CompanyList extends Component {
+
+    constructor(props) {
+        super(props)
+
+        this.state = {
+                companys: []
+        }
+        this.addCompany = this.addCompany.bind(this);
+        this.editCompany = this.editCompany.bind(this);
+        this.deleteCompany = this.deleteCompany.bind(this);
+    }
+
+    deleteCompany(id){
+        CompanyService.deleteCompany(id).then( res => {
+            this.setState({companys: this.state.companys.filter(company => company.id !== id)});
+        });
+    }
+    viewCompany(id){
+        this.props.history.push(`/view_company/${id}`);
+    }
+    editCompany(id){
+        this.props.history.push(`/add_company/${id}`);
+    }
+
+    componentDidMount(){
+        CompanyService.getAll().then((res) => {
+            this.setState({ companys: res.data});
+        });
+    }
+
+    addCompany(){
+        this.props.history.push('/add_company/_add');
+    }
+
+  render() {
+    // renderStudent(students) {
     return (
-      <div className="list row">
-        <div className="col-md-8">
-          <div className="input-group mb-3">
-            {/* <input
-              type="text"
-              className="form-control"
-              placeholder="Search by title"
-              value={searchTitle}
-              onChange={onChangeSearchTitle}
-            /> */}
-            {/* <div className="input-group-append">
-              <button
-                className="btn btn-outline-secondary"
-                type="button"
-                onClick={findByTitle}
-              >
-                Search
-              </button>
-            </div> */}
-          </div>
+      <Container>
+        <div className="mt-3">
+          <Row>
+            <Col sm="4">
+              <Card body>
+                <CardTitle tag="h5">
+                  <IoMan className="font-size-xl" />
+                  100 Students
+                </CardTitle>
+
+                <CardText>
+                  With supporting text below as a natural lead-in to additional
+                  content.
+                </CardText>
+                <Button block color="success">
+                  <Link to="./ShowStudentList.tsx">
+                    <span>Manage Student</span>
+                  </Link>
+                </Button>
+              </Card>
+            </Col>
+
+            <Col sm="4">
+              <Card body>
+                <CardTitle tag="h5">
+                  <IoMan className="font-size-xl" />
+                  25 Driver
+                </CardTitle>
+
+                <CardText>
+                  With supporting text below as a natural lead-in to additional
+                  content.
+                </CardText>
+                <Button> Manage Driver </Button>
+              </Card>
+            </Col>
+
+            <Col sm="4">
+              <Card body>
+                <CardTitle tag="h5">
+                  <IoBus className="font-size-xl" />
+                  17 Bus
+                </CardTitle>
+
+                <CardText>
+                  With supporting text below as a natural lead-in to additional
+                  content.
+                </CardText>
+                <Button>Manage Bus</Button>
+              </Card>
+            </Col>
+          </Row>
         </div>
-        <div className="col-md-6">
-          <h4>Companys List</h4>
-  
-          <ul className="list-group">
-            {companys &&
-              companys.map((company, index) => (
-                <li
-                  className={
-                    "list-group-item " + (index === currentIndex ? "active" : "")
-                  }
-                  onClick={() => setActiveCompany(company, index)}
-                  key={index}
-                >
-                  {company.comName}
-                  
-                </li>
-              ))}
-          </ul>
-  
-          {/* <button
-            className="m-3 btn btn-sm btn-danger"
-            onClick={removeAllCompanys}
-          >
-            Remove All
-          </button> */}
-        </div>
-        <div className="col-md-6">
-          {currentCompany ? (
-            <div>
-              <h4>Company</h4>
-              <div>
-                <label>
-                  <strong>Title:</strong>
-                </label>{" "}
-                {currentCompany.comName}
-              </div>
-              <div>
-                <label>
-                  <strong>Description:</strong>
-                </label>{" "}
-                {currentCompany.comAddress}
-              </div>
-              {/* <div>
-                <label>
-                  <strong>Status:</strong>
-                </label>{" "}
-                {currentCompany.published ? "Published" : "Pending"}
-              </div> */}
-  
-              <Link
-                to={"/companys/" + currentCompany.id}
-                className="badge badge-warning"
-              >
-                Edit
-              </Link>
-            </div>
-          ) : (
-            <div>
-              <br />
-              <p>Please click on a Company...</p>
-            </div>
-          )}
-        </div>
-      </div>
+        {/* <Container className="mt-4">
+          <Row>
+            <Col sm="3">
+              <Button block color="success" onClick={this.addStudent}>
+                <span>Add Student</span>
+              </Button>
+            </Col>
+          </Row>
+        </Container> */}
+        <Container className="mt-5">
+          {/* {this.state.students.map((student) => this.renderStudent(student))} */}
+        </Container>
+        {
+                                    this.state.companys.map(
+                                        company => 
+          <Row>
+            <Col sm="12">
+              <Card body>
+                <CardTitle tag="h5">
+                  <IoMan className="font-size-xl" />
+                  <span>{ company.comName}</span>
+                </CardTitle>
+                <CardBody>
+                  <Row  key = {company.id}>
+                    <Col sm="4" className="text-center">
+                      <span className="font-weight-bold"> Company  Address: </span>
+                      <span>{company.comAddress}</span>
+                    </Col>
+
+                   
+
+                    <Col sm="4" className="text-center">
+                      <span className="font-weiht-bolder">Company  Email:</span>
+                      <span>{company.comEmail}</span>
+                    </Col>
+
+                    <Col sm="4" className="text-center">
+                      <span className="font-weith-bold">Company Des Name:</span>
+                      <span>{company.comDescription}</span>
+                    </Col>
+
+                    
+                    
+                  </Row>
+                </CardBody>
+                <CardFooter>
+                  <Row>
+                    <Col sm-6>
+                      <Button onClick={ () => this.editCompany(company.id)} block outline color="primary">
+                        Edit
+                      </Button>
+                    </Col>
+
+                    <Col sm-6>
+                      <Button onClick={ () => this.deleteCompany(company.id)} block outline color="denger">
+                        Delete
+                      </Button>
+                    </Col>
+                  </Row>
+                </CardFooter>
+              </Card>
+            </Col>
+          </Row>
+        )}
+      </Container>
     );
-  };
-  
-  export default CompanysList;
-  
+  }
+}
+
+export default CompanyList;

@@ -24,7 +24,7 @@ const Home = () => {
   return (
     <div className="container">
       <header className="jumbotron">
-        <h3>Placement Module</h3>
+        <h3>Student Register for Transport</h3>
         {/* <h3>{content}</h3> */}
       </header>
     </div>

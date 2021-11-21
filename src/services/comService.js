@@ -14,7 +14,7 @@ class ComService {
     }
 
     getCompanyById(companyId){
-        return axios.get(API_URL + "companys" + '/' + companyId , { headers: authHeader() });
+        return axios.get(API_URL + "companys" + '/' + companyId ,{ headers: authHeader() });
     }
 
     updateCompany(company, companyId){

@@ -1,0 +1,14 @@
+.spacing {
+  padding: 10px;
+}
+
+.style {
+  background-color: #f8f8f8;
+  border-top: 1px solid #e7e7e7;
+  text-align: center;
+  padding: 20px;
+  left: 0;
+  bottom: 0;
+  height: 100px;
+  width: 100%;
+}

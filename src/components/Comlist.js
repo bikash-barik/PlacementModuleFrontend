@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
-import CompanyService from '../services/CompanyService'
+import { useSelector } from 'react-redux'
+import CompanyService from '../services/comService'
+// import CompanyService from '../services/CompanyService'
 
 class Comlist extends Component {
+    // const {user:currentUser} = useSelector((state) => state.auth)
+    
     constructor(props) {
         super(props)
 
@@ -19,10 +23,10 @@ class Comlist extends Component {
         });
     }
     viewCompany(id){
-        this.props.history.push(`/view-company/${id}`);
+        this.props.history.push(`/view_company/${id}`);
     }
     editCompany(id){
-        this.props.history.push(`/add-company/${id}`);
+        this.props.history.push(`/add_company/${id}`);
     }
 
     componentDidMount(){
@@ -32,15 +36,16 @@ class Comlist extends Component {
     }
 
     addCompany(){
-        this.props.history.push('/add-company/_add');
+        this.props.history.push('/add_company/_add');
     }
 
     render() {
         return (
-            <div>
-                 <h2 className="text-center">Company List</h2>
+            <div className="container">
+                 <h2 className="text-center"> List</h2>
+
                  <div className = "row">
-                    {/* <button className="btn btn-primary" onClick={this.addStudent}> Add Student</button> */}
+                    <button className="btn btn-primary" onClick={this.addCompany}> Add Company</button>
                  </div>
                  <br></br>
                  <div className = "row">
@@ -48,10 +53,10 @@ class Comlist extends Component {
 
                             <thead>
                                 <tr>
-                                    <th> company Name</th>
-                                    <th> company Address</th>
-                                    <th> company Email</th>
-                                    <th> Actions</th>
+                                    <th>Company  Name</th>
+                                    <th>Company  Address</th>
+                                    <th>Company  Email</th>
+                                    <th>Company Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
