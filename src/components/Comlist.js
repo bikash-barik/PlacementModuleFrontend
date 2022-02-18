@@ -1,11 +1,21 @@
-import React, { Component } from 'react'
-import { useSelector } from 'react-redux'
+import React, { Component } from "react";
 import CompanyService from '../services/comService'
-// import CompanyService from '../services/CompanyService'
+import { BrowserRouter as Link } from "react-router-dom";
+
+import {  IoMan, IoBus } from "react-icons/io5";
+import {
+  Button,
+  Card,
+  CardBody,
+  CardTitle,
+  CardText,
+  CardFooter,
+} from "reactstrap";
+
+import { Col, Row, Container } from "reactstrap";
 
 class Comlist extends Component {
-    // const {user:currentUser} = useSelector((state) => state.auth)
-    
+
     constructor(props) {
         super(props)
 
@@ -36,53 +46,136 @@ class Comlist extends Component {
     }
 
     addCompany(){
-        this.props.history.push('/add_company/_add');
+        this.props.history.push('/placement_dept/employer_form/_add');
     }
 
-    render() {
-        return (
-            <div className="container">
-                 <h2 className="text-center"> List</h2>
+  render() {
+    // renderStudent(students) {
+    return (
+      <Container>
+        <div className="mt-3">
+          <Row>
+            <Col sm="4">
+              <Card body>
+                <CardTitle tag="h5">
+                  <IoMan className="font-size-xl" />
+                  100 Students
+                </CardTitle>
 
-                 <div className = "row">
-                    <button className="btn btn-primary" onClick={this.addCompany}> Add Company</button>
-                 </div>
-                 <br></br>
-                 <div className = "row">
-                        <table className = "table table-striped table-bordered">
+                <CardText>
+                  With supporting text below as a natural lead-in to additional
+                  content.
+                </CardText>
+                <Button block color="success">
+                  <Link to="./ShowStudentList.tsx">
+                    <span>Manage Student</span>
+                  </Link>
+                </Button>
+              </Card>
+            </Col>
 
-                            <thead>
-                                <tr>
-                                    <th>Company  Name</th>
-                                    <th>Company  Address</th>
-                                    <th>Company  Email</th>
-                                    <th>Company Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
+            <Col sm="4">
+              <Card body>
+                <CardTitle tag="h5">
+                  <IoMan className="font-size-xl" />
+                  100% Placement
+                </CardTitle>
+
+                <CardText>
+                  With supporting text below as a natural lead-in to additional
+                  content.
+                </CardText>
+                <Button> Manage Placement </Button>
+              </Card>
+            </Col>
+
+            <Col sm="4">
+              <Card body>
+                <CardTitle tag="h5">
+                  <IoBus className="font-size-xl" />
+                  17 Company
+                </CardTitle>
+
+                <CardText>
+                  With supporting text below as a natural lead-in to additional
+                  content.
+                </CardText>
+                <Button>Manage Company</Button>
+              </Card>
+            </Col>
+          </Row>
+        </div>
+        <Container className="mt-4">
+          <Row>
+            <Col sm="3">
+              <Button block color="success" onClick={this.addCompany}>
+                <span>Add Company</span>
+              </Button>
+            </Col>
+          </Row>
+        </Container>
+        <Container className="mt-5">
+          {/* {this.state.students.map((student) => this.renderStudent(student))} */}
+        </Container>
+        {
                                     this.state.companys.map(
                                         company => 
-                                        <tr key = {company.id}>
-                                             <td> { company.comName} </td>   
-                                             <td> {company.comAddress}</td>
-                                             <td> {company.comEmail}</td>
-                                             <td>
-                                                 <button onClick={ () => this.editCompany(company.id)} className="btn btn-primary">Update </button>
-                                                 <button style={{marginLeft: "10px"}} onClick={ () => this.deleteCompany(company.id)} className="btn btn-danger">Delete </button>
-                                                 <button style={{marginLeft: "10px"}} onClick={ () => this.viewCompany(company.id)} className="btn btn-primary">View </button>
-                                             </td>
-                                        </tr>
-                                    )
-                                }
-                            </tbody>
-                        </table>
+          <Row>
+            <Col sm="12">
+              <Card body>
+                <CardTitle tag="h5">
+                  <IoMan className="font-size-xl" />
+                  <span>{ company.comName}</span>
+                </CardTitle>
+                <CardBody>
+                  <Row  key = {company.id}>
+                    <Col sm="4" className="text-center">
+                      <span className="font-weight-bold"> Company  Address: </span>
+                      <span>{company.comAddress}</span>
+                    </Col>
 
-                 </div>
+                   
 
-            </div>
-        )
-    }
+                    <Col sm="4" className="text-center">
+                      <span className="font-weiht-bolder">Company  Email:</span>
+                      <span>{company.comEmail}</span>
+                    </Col>
+
+                    <Col sm="4" className="text-center">
+                      <span className="font-weith-bold">Company Type:</span>
+                      <span>{company.comType}</span>
+                    </Col>
+                    <Col sm="4" className="text-center">
+                      <span className="font-weith-bold">Company Des Name:</span>
+                      <span>{company.comDescription}</span>
+                    </Col>
+
+                    
+                    
+                  </Row>
+                </CardBody>
+                <CardFooter>
+                  <Row>
+                    <Col sm-6>
+                      <Button onClick={ () => this.editCompany(company.id)} block outline color="success">
+                        Edit
+                      </Button>
+                    </Col>
+
+                    <Col sm-6>
+                      <Button onClick={ () => this.deleteCompany(company.id)} block outline color="denger">
+                        Delete
+                      </Button>
+                    </Col>
+                  </Row>
+                </CardFooter>
+              </Card>
+            </Col>
+          </Row>
+        )}
+      </Container>
+    );
+  }
 }
 
-export default Comlist
+export default Comlist;

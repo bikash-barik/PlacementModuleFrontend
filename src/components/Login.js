@@ -28,6 +28,7 @@ const Login = (props) => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const { user: currentUser } = useSelector((state) => state.auth);
   const { isLoggedIn } = useSelector((state) => state.auth);
   const { message } = useSelector((state) => state.message);
 
@@ -53,7 +54,7 @@ const Login = (props) => {
     if (checkBtn.current.context._errors.length === 0) {
       dispatch(login(username, password))
         .then(() => {
-          props.history.push("/companys_list");
+          props.history.push("/dashboard");
           window.location.reload();
         })
         .catch(() => {
@@ -67,6 +68,7 @@ const Login = (props) => {
   if (isLoggedIn) {
     return <Redirect to="/profile" />;
   }
+
 
   return (
     <div className="col-md-12">

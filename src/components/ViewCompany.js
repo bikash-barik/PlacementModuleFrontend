@@ -44,7 +44,7 @@ class ViewCompany extends Component {
                         
                     </div>
                     <div className = "row right">
-                    <a className="btn btn-primary" href="/companys_list"> <img src="https://img.icons8.com/metro/19/ffffff/back.png"/>Back</a>
+                    <a className="btn btn-success" href="/companys_list"> <img src="https://img.icons8.com/metro/19/ffffff/back.png"/>Back</a>
                  </div>
 
                     

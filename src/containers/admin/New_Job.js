@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import CompanyService from '../services/comService'
+import NewJobService from "../../services/New-job";
 import { BrowserRouter as Link } from "react-router-dom";
 
 import {  IoMan, IoBus } from "react-icons/io5";
@@ -14,39 +14,37 @@ import {
 
 import { Col, Row, Container } from "reactstrap";
 
-class CompanyList extends Component {
+class New_Job extends Component {
 
     constructor(props) {
         super(props)
 
         this.state = {
-                companys: []
+                jobs: []
         }
-        this.addCompany = this.addCompany.bind(this);
-        this.editCompany = this.editCompany.bind(this);
-        this.deleteCompany = this.deleteCompany.bind(this);
+        this.addJobDrive = this.addJobDrive.bind(this);
+        this.editJobDrive = this.editJobDrive.bind(this);
+        this.deleteJobDrive = this.deleteJobDrive.bind(this);
     }
 
-    deleteCompany(id){
-        CompanyService.deleteCompany(id).then( res => {
-            this.setState({companys: this.state.companys.filter(company => company.id !== id)});
+    deleteJobDrive(id){
+        NewJobService.deleteJobDrive(id).then( res => {
+            this.setState({jobs: this.state.jobs.filter(job => job.id !== id)});
         });
     }
-    viewCompany(id){
-        this.props.history.push(`/view_company/${id}`);
-    }
-    editCompany(id){
-        this.props.history.push(`/add_company/${id}`);
+   
+    editJobDrive(id){
+        this.props.history.push(`/placement_dept/add_job/${id}`);
     }
 
     componentDidMount(){
-        CompanyService.getAll().then((res) => {
-            this.setState({ companys: res.data});
+        NewJobService.getAll().then((res) => {
+            this.setState({ jobs: res.data});
         });
     }
 
-    addCompany(){
-        this.props.history.push('/add_company/_add');
+    addJobDrive(){
+        this.props.history.push('/placement_dept/add_job/_add');
     }
 
   render() {
@@ -93,83 +91,97 @@ class CompanyList extends Component {
               <Card body>
                 <CardTitle tag="h5">
                   <IoBus className="font-size-xl" />
-                  17 Company
+                  17 Job
                 </CardTitle>
 
                 <CardText>
                   With supporting text below as a natural lead-in to additional
                   content.
                 </CardText>
-                <Button>Manage Company</Button>
+                <Button>Manage Job</Button>
               </Card>
             </Col>
           </Row>
         </div>
-        {/* <Container className="mt-4">
+        <Container className="mt-4">
           <Row>
             <Col sm="3">
-              <Button block color="success" onClick={this.addStudent}>
-                <span>Add Student</span>
+              <Button block color="success" onClick={this.addJobDrive}>
+                <span>Add Job</span>
               </Button>
             </Col>
           </Row>
-        </Container> */}
+        </Container>
         <Container className="mt-5">
           {/* {this.state.students.map((student) => this.renderStudent(student))} */}
         </Container>
         {
-                                    this.state.companys.map(
-                                        company => 
+                                    this.state.jobs.map(
+                                        job => 
           <Row>
             <Col sm="12">
               <Card body>
                 <CardTitle tag="h5">
                   <IoMan className="font-size-xl" />
-                  <span>{ company.comName}</span>
+                  <span>{ job.comName}</span>
                 </CardTitle>
                 <CardBody>
-                  <Row  key = {company.id}>
+                  <Row  key = {job.id}>
                     <Col sm="4" className="text-center">
-                      <span className="font-weight-bold"> Company  Address: </span>
-                      <span>{company.comAddress}</span>
+                      <span className="font-weight-bold"> job  Type: </span>
+                      <span>{job.jobType}</span>
                     </Col>
 
                    
 
                     <Col sm="4" className="text-center">
-                      <span className="font-weiht-bolder">Company  Email:</span>
-                      <span>{company.comEmail}</span>
+                      <span className="font-weiht-bolder">job Salary:</span>
+                      <span>{job.jobSalary}</span>
                     </Col>
 
                     <Col sm="4" className="text-center">
-                      <span className="font-weith-bold">Company Type:</span>
-                      <span>{company.comType}</span>
+                      <span className="font-weith-bold">job Vacancy:</span>
+                      <span>{job.jobVacancy}</span>
                     </Col>
+                    <Col sm="4" className="text-center">
+                      <span className="font-weith-bold">Drive Round:</span>
+                      <span>{job.jobRound}</span>
+                    </Col>
+                    <Col sm="4" className="text-center">
+                      <span className="font-weith-bold">Drive Date:</span>
+                      <span>{job.jobDate}</span>
+                    </Col>
+                    <Col sm="4" className="text-center">
+                      <span className="font-weith-bold">job criteria:</span>
+                      <span>{job.jobCriteria}</span>
+                    </Col>
+                    
 
                     <Col sm="4" className="text-center">
-                      <span className="font-weith-bold">Company Des Name:</span>
-                      <span>{company.comDescription}</span>
+                      <span className="font-weith-bold">job Des:</span>
+                      <span>{job.jobDescription}</span>
                     </Col>
+
 
                     
                     
                   </Row>
                 </CardBody>
-                {/* <CardFooter>
+                <CardFooter>
                   <Row>
                     <Col sm-6>
-                      <Button onClick={ () => this.editCompany(company.id)} block outline color="primary">
+                      <Button onClick={ () => this.editJobDrive(job.id)} block outline color="success">
                         Edit
                       </Button>
                     </Col>
 
                     <Col sm-6>
-                      <Button onClick={ () => this.deleteCompany(company.id)} block outline color="denger">
+                      <Button onClick={ () => this.deleteJobDrive(job.id)} block outline color="denger">
                         Delete
                       </Button>
                     </Col>
                   </Row>
-                </CardFooter> */}
+                </CardFooter>
               </Card>
             </Col>
           </Row>
@@ -179,4 +191,4 @@ class CompanyList extends Component {
   }
 }
 
-export default CompanyList;
+export default New_Job;

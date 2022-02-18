@@ -7,10 +7,12 @@ import { Layout } from "antd";
 //CSS
 import "../../style/user.css";
 
+
+import CompanyList from "../../components/CompanyList";
 import UserProfile from "./profile";
 import UserEmployerList from "./user_employer_list";
 import DetailsEdit from './details_edit'
-
+import New_Job from "./New_job";
 const { Content } = Layout;
 
 class UserMain extends Component {
@@ -23,7 +25,8 @@ class UserMain extends Component {
           <Content className="user-content">
             <Switch>
               <Route path="/user/profile" component={UserProfile} />
-              <Route path="/user/employers" component={UserEmployerList} />
+              <Route path="/user/employers" component={CompanyList} />
+              <Route path="/user/new_job" component={New_Job} />
               <Route path="/user/details_edit" component={DetailsEdit} />
             </Switch>
           </Content>

@@ -16,10 +16,11 @@ import CompanyList from "./components/CompanyList";
 import CompanyPage from "./components/Pages/CompanyPage";
 import ViewCompany from "./components/ViewCompany";
 import CreateCompany from "./components/CreateCompany";
-
+import Location from "./components/footer/location";
 import { history } from "./helpers/history";
 
 //custom
+import Dashboard from "./components/Pages/Dashboard";
 import Header from "./components/header/Header";
 import Home from "./components/home/index";
 import UserMain from "../src/containers/user/index";
@@ -39,11 +40,13 @@ const App = () => {
           <Switch>
             <Route exact path={["/", "/home"]} component={Home} />
             <Route path="/user" component={UserMain} />
-            <Route path="/admin" component={AdminMain} />
+            <Route path="/placement_dept" component={AdminMain} />
+            <Route path="/dashboard" component={Dashboard} />
             <Route path="/signup" component={SignUpForm} />
             <Route path="/signin" component={SignInForm} />
             <Route path="/forgot_password" component={ForgotPassword} />
             <Route path="/reset_password" component={ResetPassword} />
+            <Route path="/Location" component={Location} />
 
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />

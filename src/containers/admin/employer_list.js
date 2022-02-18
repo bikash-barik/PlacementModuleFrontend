@@ -25,7 +25,7 @@ const columns = [
     key: "action",
     render: (text, record) => (
       <span>
-        <Link to={`/admin/employer/${record._id}`}>View</Link>
+        <Link to={`/placement_dept/employer/${record._id}`}>View</Link>
       </span>
     )
   }

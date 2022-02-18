@@ -7,7 +7,7 @@ import { Row, Col, Icon, message } from "antd";
 class EmployerShow extends Component {
   componentDidMount() {
     const tempid = window.location.href;
-    const splitid = tempid.split("admin/employer/");
+    const splitid = tempid.split("placement_dept/employer/");
     const id = splitid[1];
     this.props.getEmployer(id, this.props.admin.token);
   }
@@ -31,7 +31,7 @@ class EmployerShow extends Component {
           <Row gutter={16} className="">
             <Col span={3} />
             <Col span={3}>
-              <Link to="/admin/employer_list">
+              <Link to="/placement_dept/employer_list">
                 <Icon className="" type="arrow-left" />
               </Link>
             </Col>

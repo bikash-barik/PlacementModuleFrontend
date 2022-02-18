@@ -35,7 +35,7 @@ class UserShow extends Component {
           <Row gutter={16} className="admin-top-row">
             <Col span={3} />
             <Col span={3}>
-              <Link to="/admin/users">
+              <Link to="/placement_dept/users">
                 <Icon className="admin-back-arrow" type="arrow-left" />
               </Link>
             </Col>
