@@ -59,7 +59,7 @@ class Comlist extends Component {
               <Card body>
                 <CardTitle tag="h5">
                   <IoMan className="font-size-xl" />
-                  100 Students
+                  16 Company
                 </CardTitle>
 
                 <CardText>
@@ -68,7 +68,7 @@ class Comlist extends Component {
                 </CardText>
                 <Button block color="success">
                   <Link to="./ShowStudentList.tsx">
-                    <span>Manage Student</span>
+                    <span>Manage Company</span>
                   </Link>
                 </Button>
               </Card>
@@ -78,7 +78,7 @@ class Comlist extends Component {
               <Card body>
                 <CardTitle tag="h5">
                   <IoMan className="font-size-xl" />
-                  100% Placement
+                  6 Register Student
                 </CardTitle>
 
                 <CardText>
@@ -93,7 +93,7 @@ class Comlist extends Component {
               <Card body>
                 <CardTitle tag="h5">
                   <IoBus className="font-size-xl" />
-                  17 Company
+                  6 Company
                 </CardTitle>
 
                 <CardText>

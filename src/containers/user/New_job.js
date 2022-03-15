@@ -23,7 +23,7 @@ class New_Job extends Component {
                 jobs: []
         }
         this.addJobDrive = this.addJobDrive.bind(this);
-        this.editJobDrive = this.editJobDrive.bind(this);
+        this.applyjobDrive = this.applyjobDrive.bind(this);
         this.deleteJobDrive = this.deleteJobDrive.bind(this);
     }
 
@@ -33,8 +33,8 @@ class New_Job extends Component {
         });
     }
    
-    editJobDrive(id){
-        this.props.history.push(`/admin/add_job/${id}`);
+    applyjobDrive(){
+        this.props.history.push(`/user/apply_job/_add`);
     }
 
     componentDidMount(){
@@ -52,12 +52,13 @@ class New_Job extends Component {
     return (
       <Container>
         <div className="mt-3">
+        <h4>New Deive</h4>
           <Row>
             <Col sm="4">
               <Card body>
                 <CardTitle tag="h5">
                   <IoMan className="font-size-xl" />
-                  100 Students
+                  5 Drive
                 </CardTitle>
 
                 <CardText>
@@ -66,7 +67,7 @@ class New_Job extends Component {
                 </CardText>
                 <Button block color="success">
                   <Link to="./ShowStudentList.tsx">
-                    <span>Manage Student</span>
+                    <span>My Drives</span>
                   </Link>
                 </Button>
               </Card>
@@ -76,14 +77,19 @@ class New_Job extends Component {
               <Card body>
                 <CardTitle tag="h5">
                   <IoMan className="font-size-xl" />
-                  100% Placement
+                  12 New Drives
                 </CardTitle>
 
                 <CardText>
                   With supporting text below as a natural lead-in to additional
                   content.
                 </CardText>
-                <Button> Manage Placement </Button>
+                <Button block>
+                  <a href="/user/new_job" className="text-decoration-none text-light">
+                 New Drive
+                  </a>
+                </Button>
+
               </Card>
             </Col>
 
@@ -91,14 +97,14 @@ class New_Job extends Component {
               <Card body>
                 <CardTitle tag="h5">
                   <IoBus className="font-size-xl" />
-                  17 Job
+                  Placed Student
                 </CardTitle>
 
                 <CardText>
                   With supporting text below as a natural lead-in to additional
                   content.
                 </CardText>
-                <Button>Manage Job</Button>
+                <Button>View More</Button>
               </Card>
             </Col>
           </Row>
@@ -147,7 +153,7 @@ class New_Job extends Component {
                 <CardFooter>
                   <Row>
                     <Col sm-4 md-4 className="justify-center">
-                      <Button onClick={ () => this.editJobDrive(job.id)} block outline color="primary">
+                      <Button onClick={ () => this.applyjobDrive()} block outline color="primary">
                         Apply
                       </Button>
                     </Col>

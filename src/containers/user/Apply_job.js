@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import CompanySevice from '../services/comService'
+import ApplyJobSevice from '../../services/ApplyJobService'
 
 
 class CreateCompany extends Component {
@@ -10,16 +10,16 @@ class CreateCompany extends Component {
             // step 2
             id: this.props.match.params.id,
             comName: '',
-            comAddress: '',
-            comEmail: '',
-            comType: '',
-            comDescription: '',
+            name: '',
+            emailId: '',
+            regdNo: '',
+           
             
 
         }
         this.changecomNameHandler = this.changecomNameHandler.bind(this);
-        this.changecomAddressHandler = this.changecomAddressHandler.bind(this);
-        this.saveOrUpdateCompany = this.saveOrUpdateCompany.bind(this);
+        this.changenameHandler = this.changenameHandler.bind(this);
+        this.saveOrUpdateApplyJob = this.saveOrUpdateApplyJob.bind(this);
     }
 
     // step 3
@@ -29,31 +29,31 @@ class CreateCompany extends Component {
         if(this.state.id === '_add'){
             return
         }else{
-            CompanySevice.getCompanyById(this.state.id).then( (res) =>{
-                let company = res.data;
+          ApplyJobSevice.getApplyJobById(this.state.id).then( (res) =>{
+                let applyjob = res.data;
                 this.setState({
-                    comName: company.comName,
-                    comAddress: company.comAddress,
-                    comEmail : company.comEmail,
-                    comType : company.comType,
-                    comDescription: company.comDescription,
+                    comName: applyjob.comName,
+                    name: applyjob.name,
+                    email : applyjob.email,
+                    regdNo : applyjob.regdNo,
+                   
                 });
             });
         }        
     }
-    saveOrUpdateCompany = (e) => {
+    saveOrUpdateApplyJob = (e) => {
         e.preventDefault();
-        let company = {comName: this.state.comName,comAddress: this.state.comAddress, comEmail: this.state.comEmail, comType: this.state.comType,comDescription: this.state.comDescription};
-        console.log('company => ' + JSON.stringify(company));
+        let applyjob = {comName: this.state.comName,name: this.state.name, emailId: this.state.emailId, regdNo: this.state.regdNo};
+        console.log('applyjob => ' + JSON.stringify(applyjob));
 
         // step 5
         if(this.state.id === '_add'){
-            CompanySevice.createCompany(company).then(res =>{
-                this.props.history.push('/admin/employer_list');
+          ApplyJobSevice.createApplyJob(applyjob).then(res =>{
+                this.props.history.push('/user/new_job');
             });
         }else{
-            CompanySevice.updateCompany(company, this.state.id).then( res => {
-                this.props.history.push('/admin/employer_list');
+          ApplyJobSevice.updateApplyJob(applyjob, this.state.id).then( res => {
+                this.props.history.push('/user/new_job');
             });
         }
     }
@@ -62,32 +62,30 @@ class CreateCompany extends Component {
         this.setState({comName: event.target.value});
     }
 
-    changecomAddressHandler= (event) => {
-        this.setState({comAddress: event.target.value});
+    changenameHandler= (event) => {
+        this.setState({name: event.target.value});
     }
 
-    changecomEmailHandler= (event) => {
-        this.setState({comEmail: event.target.value});
+    changeemailIdHandler= (event) => {
+        this.setState({emailId: event.target.value});
     }
 
-    changecomTypeHandler= (event) => {
-      this.setState({comType: event.target.value});
+    changeregdNoHandler= (event) => {
+      this.setState({regdNo: event.target.value});
   }
 
-    changecomDescriptionHandler= (event) => {
-        this.setState({comDescription: event.target.value});
-    }
+   
 
    
     cancel(){
-        this.props.history.push('/admin/employer_list');
+        this.props.history.push('/user/new_job');
     }
 
     getTitle(){
         if(this.state.id === '_add'){
-            return <h3 className="text-center">Add Company</h3>
+            return <h3 className="text-center">Apply For New Drive</h3>
         }else{
-            return <h3 className="text-center">Update Compnay</h3>
+            return <h3 className="text-center">Update Details</h3>
         }
     }
     render() {
@@ -109,6 +107,7 @@ class CreateCompany extends Component {
                               <div class="d-flex flex-row align-items-center mb-4">
                                 <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                 <div class="form-outline flex-fill mb-0">
+                                <label className='h5'>Your company Name</label>
                                   <input
                                     type="text"
                                     id="form3Example1c"
@@ -123,12 +122,13 @@ class CreateCompany extends Component {
                               <div class="d-flex flex-row align-items-center mb-4">
                                 <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                 <div class="form-outline flex-fill mb-0">
+                                <label className='h5'>Enter Your Name</label>
                                   <input
                                     type="text"
                                     id="form3Example1c"
                                     class="form-control"
-                                    placeholder="YourCompany Address"
-                                    value={this.state.comAddress} onChange={this.changecomAddressHandler}
+                                    placeholder="Enter Your Name"
+                                    value={this.state.name} onChange={this.changenameHandler}
                                   />
                                   
                                 </div>
@@ -137,12 +137,13 @@ class CreateCompany extends Component {
                               <div class="d-flex flex-row align-items-center mb-4">
                                 <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                 <div class="form-outline flex-fill mb-0">
+                                <label className='h5'>Your Email</label>
                                   <input
                                     type="email"
                                     id="form3Example3c"
                                     class="form-control"
-                                    placeholder="Your Company Email"
-                                    value={this.state.comEmail} onChange={this.changecomEmailHandler}
+                                    placeholder="Your Email"
+                                    value={this.state.emailId} onChange={this.changeemailIdHandler}
                                   />
                                  
                                 </div>
@@ -151,40 +152,28 @@ class CreateCompany extends Component {
                               <div class="d-flex flex-row align-items-center mb-4">
                                 <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                 <div class="form-outline flex-fill mb-0">
+                                <label className='h5'>Your Regd No.</label>
                                   <input
-                                    type="text"
+                                    type="number"
                                     id="form3Example3c"
                                     class="form-control"
-                                    placeholder="Your Company Type"
-                                    value={this.state.comType} onChange={this.changecomTypeHandler}
+                                    placeholder="Your Regd No."
+                                    value={this.state.regdNo} onChange={this.changeregdNoHandler}
                                   />
                                  
                                 </div>
                               </div>
     
-                              <div class="d-flex flex-row align-items-center mb-4">
-                                <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                <div class="form-outline flex-fill mb-0">
-                                  <textarea
-                                    type="text"
-                                    id="form3Example3c"
-                                    class="form-control"
-                                    placeholder="Your Description"
-                                    value={this.state.comDescription} onChange={this.changecomDescriptionHandler}
-                                  />
-                                  
-                                </div>
-                              </div>
                               
                               <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                <button className="btn btn-primary btn-lg" onClick={this.saveOrUpdateCompany}>Save</button>
+                                <button className="btn btn-primary btn-lg" onClick={this.saveOrUpdateApplyJob}>Apply</button>
                                  <button className="btn btn-danger btn-lg" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>Cancel</button>
                               </div>
                             </form>
                           </div>
                           <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
                             <img
-                              src="https://image.freepik.com/free-vector/people-standing-flight-registration-counter-family-baggage-ticket-flat-vector-illustration-travelling-vacation_74855-8511.jpg"
+                              src="https://fjwp.s3.amazonaws.com/blog/wp-content/uploads/2017/06/05064459/Applying-for-Jobs-Online-When-You%E2%80%99re-Laid-Off.jpg"
                               class="img-fluid"
                               alt="Sample image"
                             />

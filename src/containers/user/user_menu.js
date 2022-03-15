@@ -62,7 +62,7 @@ const { Sider } = Layout;
             </Link>
           </Menu.Item>
           <Menu.Item key="2">
-            <Link to="/user/employers">
+            <Link to="/user/companys">
               <Icon type="user" />Company List
             </Link>
           </Menu.Item>
@@ -72,10 +72,15 @@ const { Sider } = Layout;
             </Link>
           </Menu.Item>
           <Menu.Item key="4">
+            <Link to="/user/applied_job">
+              <Icon type="user" />Applied Jobs
+            </Link>
+          </Menu.Item>
+          {/* <Menu.Item key="4">
             <Button href="/home" onClick={logOut}>
               Sign out
             </Button>
-          </Menu.Item>
+          </Menu.Item> */}
         </Menu>
       </Sider>
     );

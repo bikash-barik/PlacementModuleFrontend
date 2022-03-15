@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Label } from "reactstrap";
 import CompanySevice from "../services/comService";
 
 class CreateCompany extends Component {
@@ -111,6 +112,7 @@ class CreateCompany extends Component {
                           <div class="d-flex flex-row align-items-center mb-4">
                             <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                             <div class="form-outline flex-fill mb-0">
+                              <Label className="h5">Your company Name</Label>
                               <input
                                 type="text"
                                 id="form3Example1c"
@@ -125,6 +127,7 @@ class CreateCompany extends Component {
                           <div class="d-flex flex-row align-items-center mb-4">
                             <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                             <div class="form-outline flex-fill mb-0">
+                            <Label className="h5">YourCompany Address</Label>
                               <input
                                 type="text"
                                 id="form3Example1c"
@@ -139,9 +142,12 @@ class CreateCompany extends Component {
                           {/* dsvds */}
                           {/* <input type="text" value={latitude} />
                               <input type="text" value={longitude} /> */}
+
+                
                           <div class="d-flex flex-row align-items-center mb-4">
                             <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                             <div class="form-outline flex-fill mb-0">
+                            <Label className="h5">Your Company Email</Label>
                               <input
                                 type="email"
                                 id="form3Example3c"
@@ -156,6 +162,7 @@ class CreateCompany extends Component {
                           <div class="d-flex flex-row align-items-center mb-4">
                             <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                             <div class="form-outline flex-fill mb-0">
+                            <Label className="h5">Your Company Type</Label>
                               <input
                                 type="text"
                                 id="form3Example3c"
@@ -167,14 +174,62 @@ class CreateCompany extends Component {
                             </div>
                           </div>
 
+                          {/* placement manager data */}
                           <div class="d-flex flex-row align-items-center mb-4">
                             <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                             <div class="form-outline flex-fill mb-0">
+                            <Label className="h5">Company Staff Name</Label>
+                              <input
+                                type="text"
+                                id="form3Example3c"
+                                class="form-control"
+                                placeholder="Meeting with abc persion.."
+                                value={this.state.comType}
+                                onChange={this.changecomTypeHandler}
+                              />
+                            </div>
+                          </div>
+
+                          <div class="d-flex flex-row align-items-center mb-4">
+                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                            <div class="form-outline flex-fill mb-0">
+                            <Label className="h5">Meeting Time</Label>
+                              <input
+                                type="time"
+                                id="form3Example3c"
+                                class="form-control"
+                                placeholder="Meeting with abc persion.."
+                                value={this.state.comType}
+                                onChange={this.changecomTypeHandler}
+                              />
+                            </div>
+                          </div>
+
+                          <div class="d-flex flex-row align-items-center mb-4">
+                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                            <div class="form-outline flex-fill mb-0">
+                            <Label className="h5">Meeting Date</Label>
+                              <input
+                                type="Date"
+                                id="form3Example3c"
+                                class="form-control"
+                                placeholder="Meeting with abc persion.."
+                                value={this.state.comType}
+                                onChange={this.changecomTypeHandler}
+                              />
+                            </div>
+                          </div>
+                          {/* placement manager data end */}
+
+                          <div class="d-flex flex-row align-items-center mb-4">
+                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                            <div class="form-outline flex-fill mb-0">
+                            <Label className="h5">Description</Label>
                               <textarea
                                 type="text"
                                 id="form3Example3c"
                                 class="form-control"
-                                placeholder="Your Description"
+                                placeholder="Description"
                                 value={this.state.comDescription}
                                 onChange={this.changecomDescriptionHandler}
                               />

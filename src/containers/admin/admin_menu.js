@@ -57,8 +57,8 @@ const AdminMenu = () => {
             </Link>
           </Menu.Item>
           <Menu.Item key="2">
-            <Link to="/placement_dept/users">
-              <Icon type="user" />Users
+            <Link to="/placement_dept/applied_st_list">
+              <Icon type="user" />Appied Students
             </Link>
           </Menu.Item>
           <Menu.Item key="3">

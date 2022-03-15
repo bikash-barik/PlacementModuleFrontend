@@ -10,9 +10,10 @@ import "../../style/user.css";
 
 import CompanyList from "../../components/CompanyList";
 import UserProfile from "./profile";
-import UserEmployerList from "./user_employer_list";
+import Apply_Job from "./Apply_job";
 import DetailsEdit from './details_edit'
 import New_Job from "./New_job";
+import AppliedJobList from "./AppliedJobList"
 const { Content } = Layout;
 
 class UserMain extends Component {
@@ -25,9 +26,11 @@ class UserMain extends Component {
           <Content className="user-content">
             <Switch>
               <Route path="/user/profile" component={UserProfile} />
-              <Route path="/user/employers" component={CompanyList} />
+              <Route path="/user/companys" component={CompanyList} />
               <Route path="/user/new_job" component={New_Job} />
               <Route path="/user/details_edit" component={DetailsEdit} />
+              <Route path="/user/apply_job/:id" component={Apply_Job} />
+              <Route path="/user/applied_job" component={AppliedJobList} />
             </Switch>
           </Content>
         </Layout>

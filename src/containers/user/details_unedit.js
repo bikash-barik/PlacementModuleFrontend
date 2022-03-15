@@ -16,84 +16,84 @@ class DetailsUnedit extends Component {
         <div className="profile-wrapper">
           <Row className="profile-row">
             <Col span={7}>First Name:</Col>
-            <Col>{data.firstName}</Col>
+            <Col>Bikash</Col>
           </Row>
           <Row className="profile-row">
             <Col span={7}>Middle Name:</Col>
-            <Col>{data.middleName}</Col>
+            <Col>Ku.</Col>
           </Row>
           <Row className="profile-row">
             <Col span={7}>Last Name:</Col>
-            <Col>{data.lastName}</Col>
+            <Col>Barik</Col>
           </Row>
           <Row className="profile-row">
             <Col span={7}>Email:</Col>
-            <Col>{data.email}</Col>
+            <Col>bikash@gmail.com</Col>
           </Row>
           <Row className="profile-row">
             <Col span={7}>Date of Birth:</Col>
             {/* <Col>{moment(data.dob).format("MMM Do YY")}</Col> */}
-            <Col></Col>
+            <Col>28-02-2001</Col>
           </Row>
           <Row className="profile-row">
             <Col span={7}>Gender:</Col>
-            <Col>{data.gender}</Col>
+            <Col>Male</Col>
           </Row>
           <Row className="profile-row">
             <Col span={7}>Mobile Number:</Col>
-            <Col>{data.mobileNumber}</Col>
+            <Col>7978699120</Col>
           </Row>
           <Row className="profile-row">
             <Col span={7}>Alternative Mobile Number:</Col>
-            <Col>{data.altMobileNumber}</Col>
+            <Col>9937936307</Col>
           </Row>
           <Row className="profile-row">
             <Col span={7}>Father's Name:</Col>
-            <Col>{data.fatherName}</Col>
+            <Col>Raj Kumar Barik</Col>
           </Row>
           <Row className="profile-row">
             <Col span={7}>Father's Mobile Number:</Col>
-            <Col>{data.fatherMobile}</Col>
+            <Col>7978692558</Col>
           </Row>
           <Row className="profile-row">
             <Col span={7}>Mother's Name:</Col>
-            <Col>{data.motherName}</Col>
+            <Col>Panchali Barik</Col>
           </Row>
           <Row className="profile-row">
             <Col span={7}>Mother's Mobile Number:</Col>
-            <Col>{data.motherMobile}</Col>
+            <Col>9989758965</Col>
           </Row>
           <Row className="profile-row">
             <Col span={7}>Permanent Address:</Col>
-            <Col>{data.permanentAddress}</Col>
+            <Col>Rourakela</Col>
           </Row>
           <Row className="profile-row">
             <Col span={7}>Current Address:</Col>
-            <Col>{data.currentAddress}</Col>
+            <Col>Bhubaneswar</Col>
           </Row>
           <Row className="profile-row">
             <Col span={7}>Class 10 Grade Points (out of 10):</Col>
-            <Col>{data.class10grade}</Col>
+            <Col>8.7</Col>
           </Row>
           <Row className="profile-row">
             <Col span={7}>Class 12 Grade Points (out of 10):</Col>
-            <Col>{data.class12grade}</Col>
+            <Col>8.5</Col>
           </Row>
           <Row className="profile-row">
             <Col span={7}>Cumulative Performance Index:</Col>
-            <Col>{data.cpi}</Col>
+            <Col>9.3</Col>
           </Row>
           <Row className="profile-row">
             <Col span={7}>Degree Branch:</Col>
-            <Col>{data.branch}</Col>
+            <Col>CSE</Col>
           </Row>
           <Row className="profile-row">
             <Col span={7}>Current Backlogs:</Col>
-            <Col>{data.currentBacklogs}</Col>
+            <Col>0</Col>
           </Row>
           <Row className="profile-row">
             <Col span={7}>Total Backlogs:</Col>
-            <Col>{data.totalBacklogs}</Col>
+            <Col>0</Col>
           </Row>
         </div>
       );

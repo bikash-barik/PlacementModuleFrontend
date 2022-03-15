@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import CompanyService from '../services/comService'
+import ApplyJobService from '../../services/ApplyJobService'
 import { BrowserRouter as Link } from "react-router-dom";
 
 import {  IoMan, IoBus } from "react-icons/io5";
@@ -14,38 +14,38 @@ import {
 
 import { Col, Row, Container } from "reactstrap";
 
-class CompanyList extends Component {
+class Applied_St_List extends Component {
 
     constructor(props) {
         super(props)
 
         this.state = {
-                companys: []
+                applyjobs: []
         }
-        this.addCompany = this.addCompany.bind(this);
-        this.editCompany = this.editCompany.bind(this);
-        this.deleteCompany = this.deleteCompany.bind(this);
+        this.applyJobs = this.applyJobs.bind(this);
+        this.editApplyjob = this.editApplyjob.bind(this);
+        this.deleteApplyJob = this.deleteApplyJob.bind(this);
     }
 
-    deleteCompany(id){
-        CompanyService.deleteCompany(id).then( res => {
-            this.setState({companys: this.state.companys.filter(company => company.id !== id)});
+    deleteApplyJob(id){
+        ApplyJobService.deleteApplyJob(id).then( res => {
+            this.setState({applyjobs: this.state.applyjobs.filter(applyjobs => applyjobs.id !== id)});
         });
     }
-    viewCompany(id){
-        this.props.history.push(`/view_company/${id}`);
-    }
-    editCompany(id){
-        this.props.history.push(`/add_company/${id}`);
+    // viewApplyJob(id){
+    //     this.props.history.push(`/user/apply_job/${id}`);
+    // }
+    editApplyjob(id){
+        this.props.history.push(`/user/apply_job/${id}`);
     }
 
     componentDidMount(){
-        CompanyService.getAll().then((res) => {
-            this.setState({ companys: res.data});
+        ApplyJobService.getAll().then((res) => {
+            this.setState({ applyjobs: res.data});
         });
     }
 
-    addCompany(){
+    applyJobs(){
         this.props.history.push('/add_company/_add');
     }
 
@@ -53,14 +53,14 @@ class CompanyList extends Component {
     // renderStudent(students) {
     return (
       <Container>
-       <div className="mt-3">
-         <h4>Company List</h4>
+        <div className="mt-3">
+        <h4>Applied Students</h4>
           <Row>
             <Col sm="4">
               <Card body>
                 <CardTitle tag="h5">
                   <IoMan className="font-size-xl" />
-                  5 Company
+                  3 Applied Students
                 </CardTitle>
 
                 <CardText>
@@ -69,7 +69,7 @@ class CompanyList extends Component {
                 </CardText>
                 <Button block color="success">
                   <Link to="./ShowStudentList.tsx">
-                    <span>My Company</span>
+                    <span>Applied Students</span>
                   </Link>
                 </Button>
               </Card>
@@ -79,7 +79,7 @@ class CompanyList extends Component {
               <Card body>
                 <CardTitle tag="h5">
                   <IoMan className="font-size-xl" />
-                  7 New Company
+                  12 New Drives
                 </CardTitle>
 
                 <CardText>
@@ -88,7 +88,7 @@ class CompanyList extends Component {
                 </CardText>
                 <Button block>
                   <a href="/user/new_job" className="text-decoration-none text-light">
-                 New Company
+                 New Drive
                   </a>
                 </Button>
 
@@ -96,7 +96,7 @@ class CompanyList extends Component {
             </Col>
 
             <Col sm="4">
-              {/* <Card body>
+              <Card body>
                 <CardTitle tag="h5">
                   <IoBus className="font-size-xl" />
                   0 Placed Student
@@ -107,7 +107,7 @@ class CompanyList extends Component {
                   content.
                 </CardText>
                 <Button>View More</Button>
-              </Card> */}
+              </Card>
             </Col>
           </Row>
         </div>
@@ -124,58 +124,54 @@ class CompanyList extends Component {
           {/* {this.state.students.map((student) => this.renderStudent(student))} */}
         </Container>
         {
-                                    this.state.companys.map(
-                                        company => 
+                                    this.state.applyjobs.map(
+                                        applyjob => 
           <Row>
             <Col sm="12">
               <Card body>
                 <CardTitle tag="h5">
                   <IoMan className="font-size-xl" />
-                  <span>{ company.comName}</span>
+                  <span>{ applyjob.comName}</span>
                 </CardTitle>
                 <CardBody>
-                  <Row  key = {company.id}>
+                  <Row  key = {applyjob.id}>
                     <Col sm="4" className="text-center">
-                      <span className="font-weight-bold"> Company  Address: </span>
-                      <span>{company.comAddress}</span>
+                      <span className="font-weight-bold"> applyjob  Address: </span>
+                      <span>{applyjob.name}</span>
                     </Col>
 
                    
 
                     <Col sm="4" className="text-center">
-                      <span className="font-weiht-bolder">Company  Email:</span>
-                      <span>{company.comEmail}</span>
+                      <span className="font-weiht-bolder">applyjob  Email:</span>
+                      <span>{applyjob.emailId}</span>
                     </Col>
 
                     <Col sm="4" className="text-center">
-                      <span className="font-weith-bold">Company Type:</span>
-                      <span>{company.comType}</span>
+                      <span className="font-weith-bold">applyjob Type:</span>
+                      <span>{applyjob.regdNo}</span>
                     </Col>
 
-                    <Col sm="4" className="text-center">
-                      <span className="font-weith-bold">Company Des Name:</span>
-                      <span>{company.comDescription}</span>
-                    </Col>
-
+                    
                     
                     
                   </Row>
                 </CardBody>
-                {/* <CardFooter>
+                <CardFooter>
                   <Row>
                     <Col sm-6>
-                      <Button onClick={ () => this.editCompany(company.id)} block outline color="primary">
-                        Edit
-                      </Button>
+                      {/* <Button onClick={ () => this.editApplyjob(applyjob.id)} block outline color="primary">
+                        Modify Details
+                      </Button> */}
                     </Col>
 
                     <Col sm-6>
-                      <Button onClick={ () => this.deleteCompany(company.id)} block outline color="denger">
-                        Delete
+                      <Button onClick={ () => this.deleteApplyJob(applyjob.id)} block outline color="denger">
+                        Cancel
                       </Button>
                     </Col>
                   </Row>
-                </CardFooter> */}
+                </CardFooter>
               </Card>
             </Col>
           </Row>
@@ -185,4 +181,4 @@ class CompanyList extends Component {
   }
 }
 
-export default CompanyList;
+export default Applied_St_List;

@@ -54,10 +54,10 @@ class New_Job extends Component {
         <div className="mt-3">
           <Row>
             <Col sm="4">
-              <Card body>
+              {/* <Card body>
                 <CardTitle tag="h5">
                   <IoMan className="font-size-xl" />
-                  100 Students
+                  6 Company
                 </CardTitle>
 
                 <CardText>
@@ -66,24 +66,25 @@ class New_Job extends Component {
                 </CardText>
                 <Button block color="success">
                   <Link to="./ShowStudentList.tsx">
-                    <span>Manage Student</span>
+                    <span>Company</span>
                   </Link>
                 </Button>
-              </Card>
+              </Card> */}
             </Col>
 
             <Col sm="4">
               <Card body>
                 <CardTitle tag="h5">
                   <IoMan className="font-size-xl" />
-                  100% Placement
+                  9 Student Register
                 </CardTitle>
 
                 <CardText>
                   With supporting text below as a natural lead-in to additional
                   content.
                 </CardText>
-                <Button> Manage Placement </Button>
+                <Button block color="success">
+                <Link to="./ShowStudentList.tsx">Student Register </Link></Button>
               </Card>
             </Col>
 
@@ -91,14 +92,14 @@ class New_Job extends Component {
               <Card body>
                 <CardTitle tag="h5">
                   <IoBus className="font-size-xl" />
-                  17 Job
+                  17 Placed Student
                 </CardTitle>
 
                 <CardText>
                   With supporting text below as a natural lead-in to additional
                   content.
                 </CardText>
-                <Button>Manage Job</Button>
+                <Button>View </Button>
               </Card>
             </Col>
           </Row>
@@ -107,7 +108,7 @@ class New_Job extends Component {
           <Row>
             <Col sm="3">
               <Button block color="success" onClick={this.addJobDrive}>
-                <span>Add Job</span>
+                <span>Add New Drive</span>
               </Button>
             </Col>
           </Row>

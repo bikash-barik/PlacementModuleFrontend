@@ -20,6 +20,7 @@ import EmployerList from "./employer_list";
 import EmployerShow from "./employer_show";
 import New_Job from "./New_Job";
 import Add_job from './Add_job'
+import Applied_St_List from "./Applied_St_List";
 
 
 const { Content } = Layout;
@@ -39,7 +40,8 @@ class AdminMain extends Component {
               <Route path="/placement_dept/users" component={UserList} />
               <Route path="/placement_dept/profile" component={Profile} />
               <Route path="/placement_dept/employer/:id" component={EmployerShow} />
-              <Route path="/placement_dept/user/:sid" component={UserShow} />
+              <Route path="/placement_dept/user/:id" component={UserShow} />
+              <Route path="/placement_dept/applied_st_list" component={Applied_St_List} />
             </Switch>
           </Content>
         </Layout>

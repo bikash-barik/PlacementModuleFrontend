@@ -226,13 +226,13 @@ changejobRoundHandler= (event) => {
                                   
                                 </div>
                               </div>
-                              <select width="300" style={{width: "350px"}} size="8" multiple multiple>
+                              {/* <select width="300" style={{width: "350px"}} size="8" multiple multiple>
       <option value='blue'>Blue</option>
       <option value='green'>Green</option>
       <option value='red'>Red</option>
       <option value='yellow'>Yellow</option>
       <option value='' selected>Select a Color</option>
-    </select>
+    </select> */}
     
                               <div class="d-flex flex-row align-items-center mb-4">
                                 <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>

@@ -62,11 +62,11 @@ const Header = () => {
                 CompanyList
               </a>
             </li> */}
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <Link to={"/profile"} className="nav-link">
                 {currentUser.username}
               </Link>
-            </li>
+            </li> */}
 
             <li className="nav-item">
               <a href="/login" className="nav-link" onClick={logOut}>

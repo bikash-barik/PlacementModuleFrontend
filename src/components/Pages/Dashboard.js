@@ -14,7 +14,7 @@ const Dashboard = ({ component: roles }) => {
     if(currentUser.roles  == "ROLE_USER"){
       return <Redirect to="/user" />;
     }else{
-      return <Redirect to="/admin" />;
+      return <Redirect to="/placement_dept/profile" />;
     }
 }
 
