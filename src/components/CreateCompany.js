@@ -13,6 +13,10 @@ class CreateCompany extends Component {
       comAddress: "",
       comEmail: "",
       comType: "",
+      comStaffName:"",
+      comMeetTime:"",
+      comMeetDate:"",
+      comDriveDate:"",
       comDescription: "",
     };
     this.changecomNameHandler = this.changecomNameHandler.bind(this);
@@ -33,6 +37,10 @@ class CreateCompany extends Component {
           comAddress: company.comAddress,
           comEmail: company.comEmail,
           comType: company.comType,
+          comStaffName: company.comStaffName,
+          comMeetTime: company.comMeetTime,
+          comMeetDate: company.comMeetDate,
+          comDriveDate: company.comDriveDate,
           comDescription: company.comDescription,
         });
       });
@@ -45,6 +53,10 @@ class CreateCompany extends Component {
       comAddress: this.state.comAddress,
       comEmail: this.state.comEmail,
       comType: this.state.comType,
+      comStaffName: this.state.comStaffName,
+      comMeetTime: this.state.comMeetTime,
+      comMeetDate: this.state.comMeetDate,
+      comDriveDate: this.state.comDriveDate,
       comDescription: this.state.comDescription,
     };
     console.log("company => " + JSON.stringify(company));
@@ -76,6 +88,20 @@ class CreateCompany extends Component {
   changecomTypeHandler = (event) => {
     this.setState({ comType: event.target.value });
   };
+
+  changecomStaffNameHandler = (event) => {
+    this.setState({ comStaffName: event.target.value });
+  };
+  changecomMeetTimeHandler = (event) => {
+    this.setState({ comMeetTime: event.target.value });
+  };
+  changecomMeetDateHandler = (event) => {
+    this.setState({ comMeetDate: event.target.value });
+  };
+  changecomDriveDateHandler = (event) => {
+    this.setState({ comDriveDate: event.target.value });
+  };
+ 
 
   changecomDescriptionHandler = (event) => {
     this.setState({ comDescription: event.target.value });
@@ -184,8 +210,8 @@ class CreateCompany extends Component {
                                 id="form3Example3c"
                                 class="form-control"
                                 placeholder="Meeting with abc persion.."
-                                value={this.state.comType}
-                                onChange={this.changecomTypeHandler}
+                                value={this.state.comStaffName}
+                                onChange={this.changecomStaffNameHandler}
                               />
                             </div>
                           </div>
@@ -199,8 +225,8 @@ class CreateCompany extends Component {
                                 id="form3Example3c"
                                 class="form-control"
                                 placeholder="Meeting with abc persion.."
-                                value={this.state.comType}
-                                onChange={this.changecomTypeHandler}
+                                value={this.state.comMeetTime}
+                                onChange={this.changecomMeetTimeHandler}
                               />
                             </div>
                           </div>
@@ -214,11 +240,28 @@ class CreateCompany extends Component {
                                 id="form3Example3c"
                                 class="form-control"
                                 placeholder="Meeting with abc persion.."
-                                value={this.state.comType}
-                                onChange={this.changecomTypeHandler}
+                                value={this.state.comMeetDate}
+                                onChange={this.changecomMeetDateHandler}
                               />
                             </div>
                           </div>
+
+                          <div class="d-flex flex-row align-items-center mb-4">
+                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                            <div class="form-outline flex-fill mb-0">
+                            <Label className="h5">Meeting Drive Date</Label>
+                              <input
+                                type="date"
+                                id="form3Example3c"
+                                class="form-control"
+                                placeholder="Meeting with abc persion.."
+                                value={this.state.comDriveDate}
+                                onChange={this.changecomDriveDateHandler}
+                              />
+                            </div>
+                          </div>
+
+                          
                           {/* placement manager data end */}
 
                           <div class="d-flex flex-row align-items-center mb-4">

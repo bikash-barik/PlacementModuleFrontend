@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ApplyJobSevice from '../../services/ApplyJobService'
+import { Label } from "reactstrap";
 
 
 class CreateCompany extends Component {
@@ -163,6 +164,20 @@ class CreateCompany extends Component {
                                  
                                 </div>
                               </div>
+                              <div class="d-flex flex-row align-items-center mb-4">
+                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                            <div class="form-outline flex-fill mb-0">
+                            <Label className="h5">Uplod CV</Label>
+                              <input
+                                type="file"
+                                id="form3Example3c"
+                                class="form-control"
+                                placeholder="Meeting with abc persion.."
+                                // value={this.state.comType}
+                                // onChange={this.changecomTypeHandler}
+                              />
+                            </div>
+                          </div>
     
                               
                               <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
