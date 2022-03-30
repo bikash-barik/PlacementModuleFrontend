@@ -50,7 +50,9 @@ const AdminMenu = () => {
   
     return (
       <Sider width={200} className="admin-sider">
+      
         <Menu mode="inline" className="admin-menu">
+        
         <Menu.Item key="1">
             <Link to="/placement_dept/profile">
               <Icon type="user" />Profile
@@ -62,25 +64,30 @@ const AdminMenu = () => {
             </Link>
           </Menu.Item>
           <Menu.Item key="3">
+            <Link to="/placement_dept/schedulemeeting">
+              <Icon type="user" />Schedule Meeting
+            </Link>
+          </Menu.Item>
+          <Menu.Item key="4">
             <Link to="/placement_dept/employer_form/_add">
               <Icon type="user" />Company Register Form
             </Link>
           </Menu.Item>
-          <Menu.Item key="4">
+          <Menu.Item key="5">
             <Link to="/placement_dept/employer_list">
               <Icon type="user" />Company List
             </Link>
           </Menu.Item>
-          <Menu.Item key="5">
+          <Menu.Item key="6">
             <Link to="/placement_dept/new_job">
               <Icon type="user" />New Drive
             </Link>
           </Menu.Item>
-          <Menu.Item key="6">
+          {/* <Menu.Item key="7">
             <Button href="/home" onClick={logOut}>
               Sign out
             </Button>
-          </Menu.Item>
+          </Menu.Item> */}
         </Menu>
       </Sider>
     );

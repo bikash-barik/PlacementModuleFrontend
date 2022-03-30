@@ -21,6 +21,8 @@ import EmployerShow from "./employer_show";
 import New_Job from "./New_Job";
 import Add_job from './Add_job'
 import Applied_St_List from "./Applied_St_List";
+// import Calendar from "../components/Calender/Containers/Home/index";
+import Calendar from "../../components/Calender/Containers/Home/index";
 
 
 const { Content } = Layout;
@@ -42,6 +44,8 @@ class AdminMain extends Component {
               <Route path="/placement_dept/employer/:id" component={EmployerShow} />
               <Route path="/placement_dept/user/:id" component={UserShow} />
               <Route path="/placement_dept/applied_st_list" component={Applied_St_List} />
+              <Route path="/placement_dept/schedulemeeting" component={Calendar}></Route>
+
             </Switch>
           </Content>
         </Layout>

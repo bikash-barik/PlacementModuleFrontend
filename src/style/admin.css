@@ -13,11 +13,12 @@
 }
 
 .admin-menu {
-  padding-top: 50px;
-  /* background-color:rgb(124, 122, 122); */
+  /* padding-top: 50px; */
+  background-color:rgb(241, 240, 240);
   width: 200px;
-  position: fixed !important;
-  position: absolute;
+  /* position: sticky;   */
+  /* position: absolute; */
+  
   top: 0;
   right: 0;
   bottom: 0;
@@ -56,4 +57,12 @@
 
 .employer-form-title {
   margin-left: 7%;
+}
+
+
+.navbar-con{
+  /* font-size: large;
+  top:5;
+  position: relative; */
+
 }

@@ -10,9 +10,9 @@ const getAll = () => {
 };
 // console.log("fvdxfvdxfbsdf"+getAll)
 
-const getAll = () => {
-  return http.get("/companys", { headers: authHeader() });
-};
+// const getAll = () => {
+//   return http.get("/companys", { headers: authHeader() });
+// };
 
 const get = id => {
   return http.get(`/tutorials/${id}`, { headers: authHeader() });

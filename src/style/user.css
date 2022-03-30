@@ -1,11 +1,12 @@
 .user-sider {
-  background: #fff;
+  background: rgb(204, 200, 200);
 }
 
 .user-menu {
-  padding-top: 50px;
+  /* padding-top: 50px; */
   width: 200px;
-  position: fixed !important;
+  background-color: rgb(243, 244, 245);
+  /* position: fixed !important; */
   position: absolute;
   top: 0;
   right: 0;

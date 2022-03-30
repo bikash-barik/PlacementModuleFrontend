@@ -44,17 +44,22 @@ class CreateCompany extends Component {
     }
     saveOrUpdateApplyJob = (e) => {
         e.preventDefault();
-        let applyjob = {comName: this.state.comName,name: this.state.name, emailId: this.state.emailId, regdNo: this.state.regdNo};
+        let applyjob = {
+          comName: this.state.comName,
+          name: this.state.name, 
+          email: this.state.email, 
+          regdNo: this.state.regdNo,
+        };
         console.log('applyjob => ' + JSON.stringify(applyjob));
-
+        console.log("jdsgsbgdvjks")
         // step 5
         if(this.state.id === '_add'){
           ApplyJobSevice.createApplyJob(applyjob).then(res =>{
-                this.props.history.push('/user/new_job');
+                this.props.history.push("/user/new_job");
             });
         }else{
           ApplyJobSevice.updateApplyJob(applyjob, this.state.id).then( res => {
-                this.props.history.push('/user/new_job');
+                this.props.history.push("/user/new_job");
             });
         }
     }
@@ -67,8 +72,8 @@ class CreateCompany extends Component {
         this.setState({name: event.target.value});
     }
 
-    changeemailIdHandler= (event) => {
-        this.setState({emailId: event.target.value});
+    changeemailHandler= (event) => {
+        this.setState({email: event.target.value});
     }
 
     changeregdNoHandler= (event) => {
@@ -79,7 +84,12 @@ class CreateCompany extends Component {
 
    
     cancel(){
-        this.props.history.push('/user/new_job');
+      if(this.state.id === '_add'){
+        return this.props.history.push('/user/new_job');
+    }else{
+        return this.props.history.push('/user/applied_job');
+    }
+        
     }
 
     getTitle(){
@@ -144,7 +154,7 @@ class CreateCompany extends Component {
                                     id="form3Example3c"
                                     class="form-control"
                                     placeholder="Your Email"
-                                    value={this.state.emailId} onChange={this.changeemailIdHandler}
+                                    value={this.state.email} onChange={this.changeemailHandler}
                                   />
                                  
                                 </div>
